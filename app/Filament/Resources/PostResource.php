@@ -27,25 +27,33 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(2048)
-                    ->reactive()
-                    ->afterStateUpdated(function (Closure $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(2048),
-                Forms\Components\FileUpload::make('thumbnail')
-                    ->columnSpan(2),
-                Forms\Components\RichEditor::make('body')
-                    ->required()
-                    ->columnSpan(2),
-                Forms\Components\Toggle::make('active')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('published_at'),
-            ]);
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(2048)
+                            ->reactive()
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('slug', Str::slug($state));
+                            }),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(2048),
+                        Forms\Components\RichEditor::make('body')
+                            ->required(),
+                        Forms\Components\Toggle::make('active')
+                            ->required(),
+                        Forms\Components\DateTimePicker::make('published_at'),
+                    ])->columnSpan(8),
+
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('thumbnail'),
+                        Forms\Components\Select::make('categories')
+                            ->multiple()
+                            ->relationship('categories', 'title'),
+                    ])->columnSpan(4)
+            ])->columns(12);
     }
 
     public static function table(Table $table): Table
