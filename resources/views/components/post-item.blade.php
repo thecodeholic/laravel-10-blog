@@ -1,6 +1,6 @@
 <article class="flex flex-col shadow my-4">
     <!-- Article Image -->
-    <a href="#" class="hover:opacity-75">
+    <a href="{{ route('post', $post) }}" class="hover:opacity-75">
         <img src="{{$post->getThumbnail()}}">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
@@ -10,7 +10,7 @@
             </a>
         @endforeach
 
-        <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">
+        <a href="{{ route('post', $post) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">
             {{$post->title}}
         </a>
         <p href="#" class="text-sm pb-3">
@@ -18,10 +18,10 @@
             Published on
             {{$post->getFormattedDate()}}
         </p>
-        <a href="#" class="pb-6">
+        <a href="{{ route('post', $post) }}" class="pb-6">
             {{$post->shortBody()}}
         </a>
-        <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
+        <a href="{{ route('post', $post) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
                 class="fas fa-arrow-right"></i></a>
     </div>
 </article>
