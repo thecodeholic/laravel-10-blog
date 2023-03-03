@@ -34,7 +34,7 @@
                 TheCodeholic Blog
             </a>
             <p class="text-lg text-gray-600">
-                Lorem Ipsum Dolor Sit Amet
+                {{ \App\Models\TextWidget::getTitle('header') }}
             </p>
         </div>
     </header>
