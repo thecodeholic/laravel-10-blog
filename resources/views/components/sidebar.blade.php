@@ -11,4 +11,6 @@
         </a>
     </div>
 
+    {{ $categories }}
+
 </aside>
