@@ -26,7 +26,7 @@
             integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
 </head>
-<body class="bg-white font-family-karla">
+<body class="bg-gray-50 font-family-karla">
 
 <!-- Text Header -->
 <header class="w-full container mx-auto">
@@ -51,33 +51,28 @@
             Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
         </a>
     </div>
-    <pre>{{ $categories }}</pre>
     <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
         <div
             class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
             <a href="{{ route('home') }}"
-               class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Home</a>
+               class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Home</a>
             @foreach($categories as $category)
                 <a href="{{route('by-category',$category)}}"
-                   class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{$category->title}}</a>
+                   class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">{{$category->title}}</a>
             @endforeach
             <a href="{{ route('about-us') }}"
-               class="hover:bg-gray-400 rounded py-2 px-4 mx-2">About Us</a>
+               class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
         </div>
     </div>
 </nav>
 
-{{ $slot }}
+<div class="container mx-auto">
+    {{ $slot }}
+</div>
 
 <footer class="w-full border-t bg-white pb-12">
     <div class="w-full container mx-auto flex flex-col items-center">
-        <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
-            <a href="#" class="uppercase px-3">About Us</a>
-            <a href="#" class="uppercase px-3">Privacy Policy</a>
-            <a href="#" class="uppercase px-3">Terms & Conditions</a>
-            <a href="#" class="uppercase px-3">Contact Us</a>
-        </div>
-        <div class="uppercase pb-6">&copy; myblog.com</div>
+        <div class="uppercase py-6">&copy; myblog.com</div>
     </div>
 </footer>
 
