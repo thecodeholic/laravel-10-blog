@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :meta-title="$post->meta_title ?: $post->title" :meta-description="$post->meta_description">
 
 
     <div class="container mx-auto flex flex-wrap py-6">

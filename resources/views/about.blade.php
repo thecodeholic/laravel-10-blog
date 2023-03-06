@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout meta-title="TheCodeholic Blog - About us">
 
     <div class="container mx-auto flex flex-wrap py-6">
 

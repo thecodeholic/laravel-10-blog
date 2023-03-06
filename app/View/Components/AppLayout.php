@@ -11,7 +11,7 @@ use Illuminate\View\View;
 class AppLayout extends Component
 {
     public Collection $categories;
-    public function __construct()
+    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null)
     {
         $this->categories = Category::query()
                     ->join('category_post', 'categories.id', '=', 'category_post.category_id')

@@ -1,4 +1,5 @@
-<x-app-layout meta-title="TheCodeholic Blog" meta-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit">
+<x-app-layout :meta-title="'TheCodeholic Blog - ' . $category->title"
+              :meta-description="'Posts filtered by category ' . $category->title">
     <div class="container mx-auto flex flex-wrap py-6">
 
         <!-- Posts Section -->

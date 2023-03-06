@@ -41,6 +41,10 @@ class PostResource extends Resource
                             ->maxLength(2048),
                         Forms\Components\RichEditor::make('body')
                             ->required(),
+                        Forms\Components\TextInput::make('meta_title')
+                            ->maxLength(255),
+                        Forms\Components\Textarea::make('meta_description')
+                            ->maxLength(255),
                         Forms\Components\Toggle::make('active')
                             ->required(),
                         Forms\Components\DateTimePicker::make('published_at'),
