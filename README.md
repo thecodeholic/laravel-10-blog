@@ -38,15 +38,33 @@ Access to the docker container
 ./vendor/bin/sail bash
 ```
 
-and from the container execute the following script to set encryption key.
+and from the container execute
 ```bash
 php artisan key:generate --ansi
 ```
 
 #### 6. Run migrations
+Access to the docker container
+```bash
+./vendor/bin/sail bash
+```
+
+and from the container execute
 
 ```bash
 php artisan migrate
 ```
 
+#### 7. Add Filament Admin user
+Access to the docker container
+```bash
+./vendor/bin/sail bash
+```
+
+```bash
+php artisan make:filament-user
+```
+
 ## Demo
+
+## 
