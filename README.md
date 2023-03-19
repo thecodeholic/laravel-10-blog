@@ -31,40 +31,31 @@ cp .env.example .env
 ```bash
 ./vendor/bin/sail up -d
 ```
-
-#### 5. Set encryption key
+From now on whenever you want to run artisan command you should do this from the container. <br>
 Access to the docker container
 ```bash
 ./vendor/bin/sail bash
 ```
 
-and from the container execute
+#### 5. Set encryption key
+
 ```bash
 php artisan key:generate --ansi
 ```
 
 #### 6. Run migrations
-Access to the docker container
-```bash
-./vendor/bin/sail bash
-```
-
-and from the container execute
 
 ```bash
 php artisan migrate
 ```
 
 #### 7. Add Filament Admin user
-Access to the docker container
-```bash
-./vendor/bin/sail bash
-```
 
 ```bash
 php artisan make:filament-user
 ```
 
 ## Demo
+> Coming soon...
 
 ## 
