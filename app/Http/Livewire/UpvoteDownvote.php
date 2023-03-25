@@ -32,9 +32,9 @@ class UpvoteDownvote extends Component
         /** @var \App\Models\User $user */
         $user = request()->user();
         if ($user) {
-            $currentStatus = \App\Models\UpvoteDownvote::where('post_id', '=', $this->post->id)->where('user_id', '=', $user->id)->first();
-            if ($currentStatus) {
-                $hasUpvote = !!$currentStatus->is_upvote;
+            $model = \App\Models\UpvoteDownvote::where('post_id', '=', $this->post->id)->where('user_id', '=', $user->id)->first();
+            if ($model) {
+                $hasUpvote = !!$model->is_upvote;
             }
         }
 
@@ -52,9 +52,9 @@ class UpvoteDownvote extends Component
             return $this->redirect(route('verification.notice'));
         }
 
-        $upvoteDownvote = \App\Models\UpvoteDownvote::where('post_id', '=', $this->post->id)->where('user_id', '=', $user->id)->first();
+        $model = \App\Models\UpvoteDownvote::where('post_id', '=', $this->post->id)->where('user_id', '=', $user->id)->first();
 
-        if (!$upvoteDownvote) {
+        if (!$model) {
             \App\Models\UpvoteDownvote::create([
                 'is_upvote' => $upvote,
                 'post_id' => $this->post->id,
@@ -64,11 +64,11 @@ class UpvoteDownvote extends Component
             return;
         }
 
-        if ($upvote && $upvoteDownvote->is_upvote || !$upvote && !$upvoteDownvote->is_upvote) {
-            $upvoteDownvote->delete();
+        if ($upvote && $model->is_upvote || !$upvote && !$model->is_upvote) {
+            $model->delete();
         } else {
-            $upvoteDownvote->is_upvote = $upvote;
-            $upvoteDownvote->save();
+            $model->is_upvote = $upvote;
+            $model->save();
         }
     }
 
