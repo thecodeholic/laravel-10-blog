@@ -16,7 +16,7 @@
         </a>
         <p href="#" class="text-sm pb-3">
             By <a href="#" class="font-semibold hover:text-gray-800">{{$post->user->name}}</a>, Published on
-            {{$post->getFormattedDate()}}
+            {{$post->getFormattedDate()}} | {{ $post->human_read_time }}
         </p>
         <a href="{{route('view', $post)}}" class="pb-6">
             {{$post->shortBody()}}
