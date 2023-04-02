@@ -12,7 +12,7 @@ class PostItem extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public Post $post)
+    public function __construct(public Post $post, public bool $showAuthor = true)
     {
         //
     }
