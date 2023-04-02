@@ -1,4 +1,4 @@
-<div>
+<div class="mt-6">
     <livewire:comment-create :post="$post" />
 
     @foreach($comments as $comment)
