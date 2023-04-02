@@ -28,17 +28,22 @@ class CommentCreate extends Component
 
     public function createComment()
     {
+        $user = auth()->user();
+        if (!$user) {
+            return $this->redirect('/login');
+        }
+
         if ($this->commentModel) {
+            if ($this->commentModel->user_id != $user->id) {
+                return response('You are not allowed to perform this action', 403);
+            }
+
             $this->commentModel->comment = $this->comment;
             $this->commentModel->save();
 
-            $this->emitUp('commentUpdated', $this->commentModel->id);
             $this->comment = '';
+            $this->emitUp('commentUpdated');
         } else {
-            $user = auth()->user();
-            if (!$user) {
-                return $this->redirect('/login');
-            }
             $comment = Comment::create([
                 'comment' => $this->comment,
                 'post_id' => $this->post->id,
