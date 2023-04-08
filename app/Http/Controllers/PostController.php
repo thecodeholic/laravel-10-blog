@@ -36,7 +36,20 @@ class PostController extends Controller
             ->where('active', '=', 1)
             ->whereDate('published_at', '<', Carbon::now())
             ->orderByDesc('upvote_count')
-            ->groupBy('posts.id')
+            ->groupBy([
+                'posts.id',
+                'posts.title',
+                'posts.slug',
+                'posts.thumbnail',
+                'posts.body',
+                'posts.active',
+                'posts.published_at',
+                'posts.user_id',
+                'posts.created_at',
+                'posts.updated_at',
+                'posts.meta_title',
+                'posts.meta_description',
+            ])
             ->limit(5)
             ->get();
 
