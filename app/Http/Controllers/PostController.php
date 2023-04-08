@@ -114,7 +114,13 @@ class PostController extends Controller
             ->leftJoin('category_post', 'categories.id', '=', 'category_post.category_id')
             ->leftJoin('posts', 'posts.id', '=', 'category_post.post_id')
             ->orderByDesc('max_date')
-            ->groupBy('categories.id')
+            ->groupBy([
+                'categories.id',
+                'categories.title',
+                'categories.slug',
+                'categories.created_at',
+                'categories.updated_at',
+            ])
             ->limit(5)
             ->get();
 
