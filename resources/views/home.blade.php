@@ -9,7 +9,9 @@
                     Latest Post
                 </h2>
 
-                <x-post-item :post="$latestPost"/>
+                @if ($latestPost)
+                    <x-post-item :post="$latestPost"/>
+                @endif
             </div>
 
             <!-- Popular 3 post -->
